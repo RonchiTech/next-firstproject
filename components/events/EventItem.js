@@ -1,4 +1,11 @@
-import Link from 'next/link';
+import classes from './styles/EventItem.module.css';
+
+import Button from '../ui/button';
+
+import DateIcon from '../icons/date-icon';
+import AddressIcon from '../icons/address-icon';
+import ArrowIcon from '../icons/arrow-right-icon';
+
 const EventItem = (props) => {
   const { title, image, date, location, id } = props.item;
   console.log('eventitem:', props);
@@ -10,24 +17,27 @@ const EventItem = (props) => {
   const adjustedAddress = location.replace(',', '\n');
   const linkAddress = `/events/${id}`;
   return (
-    <li key={id}>
-      <img
-        src={'/' + image}
-        alt={title}
-        style={{ width: '500px', height: 'auto' }}
-      />
-      <div>
-        <div>
+    <li className={classes.item}>
+      <img src={'/' + image} alt={title} className={classes.image} />
+      <div className={classes.content}>
+        <div className={classes.summary}>
           <h2>{title}</h2>
-          <div>
+          <div className={classes.date}>
+            <DateIcon />
             <time>{adjustedDate}</time>
           </div>
-          <div>
+          <div className={classes.address}>
+            <AddressIcon />
             <address>{adjustedAddress}</address>
           </div>
         </div>
-        <div>
-          <Link href={linkAddress}>Explore Event</Link>
+        <div className={classes.actions}>
+          <Button link={linkAddress}>
+            <span>Explore Event</span>
+            <span className={classes.icon}>
+              <ArrowIcon />
+            </span>
+          </Button>
         </div>
       </div>
     </li>
