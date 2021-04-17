@@ -8,7 +8,7 @@ import ArrowIcon from '../icons/arrow-right-icon';
 
 const EventItem = (props) => {
   const { title, image, date, location, id } = props.item;
-  console.log('eventitem:', props);
+ 
   const adjustedDate = new Date(date).toLocaleDateString('en-US', {
     day: 'numeric',
     month: 'long',

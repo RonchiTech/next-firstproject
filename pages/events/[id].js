@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 const EventDetailPage= () => {
   const router = useRouter();
-  console.log(router);
+ 
 
   return (
     <div>
